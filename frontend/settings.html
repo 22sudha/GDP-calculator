@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-transition">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Life Expectancy Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Add these CSS variables at the top of your existing styles */
+        :root {
+            --color-primary: #3B82F6;
+            --color-secondary: #60A5FA;
+            --color-accent: #2563EB;
+            --color-hover: #1D4ED8;
+        }
+
+        /* Update these classes to use CSS variables */
+        .settings-card {
+            @apply bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .settings-switch.active {
+            background-color: var(--color-primary);
+        }
+
+        #saveSettings {
+            background-color: var(--color-primary);
+        }
+
+        #saveSettings:hover {
+            background-color: var(--color-hover);
+        }
+
+        /* Add theme classes */
+        .theme-blue { /* Default theme */ }
+        .theme-purple .settings-card i { color: var(--color-primary); }
+        .theme-green .settings-card i { color: var(--color-primary); }
+        .theme-indigo .settings-card i { color: var(--color-primary); }
+
+        .settings-input {
+            @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+            bg-white dark:bg-gray-700 text-gray-900 dark:text-white;
+        }
+
+        /* Add specific styles for the color scheme dropdown */
+        #colorScheme {
+            @apply cursor-pointer appearance-none;
+            background-image: url("data:image/svg+xml,..."); /* Add dropdown arrow */
+        }
+
+        /* Add color preview indicators */
+        .color-option {
+            @apply flex items-center gap-2;
+        }
+
+        .color-preview {
+            @apply w-4 h-4 rounded-full inline-block;
+        }
+
+        /* Theme-specific colors */
+        .theme-blue .settings-card { border-color: #3B82F6; }
+        .theme-purple .settings-card { border-color: #8B5CF6; }
+        .theme-green .settings-card { border-color: #10B981; }
+        .theme-indigo .settings-card { border-color: #6366F1; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-8">Settings</h1>
+
+        <!-- Settings Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Appearance Settings -->
+            <div class="settings-card">
+                <h2 class="text-xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-palette text-blue-500 mr-3"></i>
+                    Appearance
+                </h2>
+                <div class="space-y-6">
+                    <!-- Theme Toggle -->
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700">Dark Mode</span>
+                        <button id="themeToggle" class="settings-switch bg-gray-200" aria-label="Toggle Theme">
+                            <span class="settings-switch-dot ml-1"></span>
+                        </button>
+                    </div>
+                    <!-- Color Scheme -->
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Color Scheme</label>
+                        <div class="relative">
+                            <select id="colorScheme" class="settings-input pr-10">
+                                <option value="blue" class="color-option">
+                                    <span class="color-preview bg-blue-500"></span>Blue
+                                </option>
+                                <option value="purple" class="color-option">
+                                    <span class="color-preview bg-purple-500"></span>Purple
+                                </option>
+                                <option value="green" class="color-option">
+                                    <span class="color-preview bg-green-500"></span>Green
+                                </option>
+                                <option value="indigo" class="color-option">
+                                    <span class="color-preview bg-indigo-500"></span>Indigo
+                                </option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i class="fas fa-chevron-down text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Settings -->
+            <div class="settings-card">
+                <h2 class="text-xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-database text-green-500 mr-3"></i>
+                    Data Preferences
+                </h2>
+                <div class="space-y-6">
+                    <!-- Data Update Frequency -->
+                    <div>
+                        <label class="block text-gray-700 mb-2">Data Update Frequency</label>
+                        <select id="updateFrequency" class="settings-input">
+                            <option value="realtime">Real-time</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+                    <!-- Cache Management -->
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700">Cache Data Locally</span>
+                        <button id="cacheToggle" class="settings-switch bg-gray-200">
+                            <span class="settings-switch-dot ml-1"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-card">
+                <h2 class="text-xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-bell text-yellow-500 mr-3"></i>
+                    Notifications
+                </h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700">Email Notifications</span>
+                        <button id="emailToggle" class="settings-switch bg-gray-200">
+                            <span class="settings-switch-dot ml-1"></span>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700">Data Update Alerts</span>
+                        <button id="alertsToggle" class="settings-switch bg-gray-200">
+                            <span class="settings-switch-dot ml-1"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Settings -->
+            <div class="settings-card">
+                <h2 class="text-xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-shield-alt text-red-500 mr-3"></i>
+                    Privacy
+                </h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700">Share Analytics</span>
+                        <button id="analyticsToggle" class="settings-switch bg-gray-200">
+                            <span class="settings-switch-dot ml-1"></span>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700">Store History</span>
+                        <button id="historyToggle" class="settings-switch bg-gray-200">
+                            <span class="settings-switch-dot ml-1"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="mt-8 flex justify-end">
+            <button id="saveSettings" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                Save Changes
+            </button>
+        </div>
+    </main>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/settings.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load components first
+            Promise.all([
+                fetch('include/navbar.html').then(res => res.text()),
+                fetch('include/footer.html').then(res => res.text())
+            ]).then(([navbar, footer]) => {
+                document.getElementById('navbar-placeholder').innerHTML = navbar;
+                document.getElementById('footer-placeholder').innerHTML = footer;
+                
+                // Initialize settings after components are loaded
+                const settingsManager = new SettingsManager();
+                settingsManager.initializeUI();
+            }).catch(error => {
+                console.error('Error loading components:', error);
+            });
+        });
+    </script>
+</body>
+</html>

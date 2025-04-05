@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Expectancy Analysis</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 relative overflow-x-hidden">    
+    <!-- Include the navbar -->
+    <div id="navbar-container"></div>
+
+<main class="container mx-auto px-4 py-8">
+    <section class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8 mb-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6" data-aos="fade-down">Data Input</h1>
+        <div class="space-y-8">
+            <div class="space-y-4" data-aos="fade-up">
+                <h2 class="text-xl font-semibold text-gray-700">Upload CSV File</h2>
+                <div class="space-y-2">
+                    <input type="file" id="csvFile" accept=".csv" class="w-full p-2 border rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                    <button id="uploadBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md transition-colors duration-200">Upload File</button>
+                </div>
+            </div>
+
+            <div class="border-t pt-8" data-aos="fade-up">
+                <h2 class="text-xl font-semibold text-gray-700 mb-6">Manual Data Entry</h2>
+                <form id="dataForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="country">Country:</label>
+                        <input type="text" id="country" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="year">Year:</label>
+                        <input type="number" id="year" min="1800" max="2024" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="status">Status:</label>
+                        <input type="text" id="status" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="lifeExpectancy">Life Expectancy:</label>
+                        <input type="number" id="lifeExpectancy" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="adultMortality">Adult Mortality:</label>
+                        <input type="number" id="adultMortality" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="infantDeaths">Infant Deaths:</label>
+                        <input type="number" id="infantDeaths" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="alcohol">Alcohol Consumption:</label>
+                        <input type="number" id="alcohol" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="percentageExpenditure">Percentage Expenditure:</label>
+                        <input type="number" id="percentageExpenditure" step="0.01" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="hepatitisB">Hepatitis B:</label>
+                        <input type="number" id="hepatitisB" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="measles">Measles:</label>
+                        <input type="number" id="measles" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="bmi">BMI:</label>
+                        <input type="number" id="bmi" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="underFiveDeaths">Under-Five Deaths:</label>
+                        <input type="number" id="underFiveDeaths" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="polio">Polio:</label>
+                        <input type="number" id="polio" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="totalExpenditure">Total Expenditure:</label>
+                        <input type="number" id="totalExpenditure" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="diphtheria">Diphtheria:</label>
+                        <input type="number" id="diphtheria" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="hivAids">HIV/AIDS:</label>
+                        <input type="number" id="hivAids" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="gdp">GDP:</label>
+                        <input type="number" id="gdp" step="0.01" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="population">Population:</label>
+                        <input type="number" id="population" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="thinness119Years">Thinness 1-19 Years:</label>
+                        <input type="number" id="thinness119Years" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="thinness59Years">Thinness 5-9 Years:</label>
+                        <input type="number" id="thinness59Years" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="incomeComposition">Income Composition:</label>
+                        <input type="number" id="incomeComposition" step="0.01" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-600" for="schooling">Schooling:</label>
+                        <input type="number" id="schooling" step="0.1" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md transition-colors duration-200 mr-4">Add Data</button>
+                    <button type="button" id="calculateBtn" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md transition-colors duration-200">Calculate Life Expectancy</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="preview-section" data-aos="fade-up" data-aos-delay="600">
+            <h2>Data Preview</h2>
+            <div id="dataPreview" class="data-table-container">
+                <!-- Data table will be inserted here via JavaScript -->
+            </div>
+        </div>
+    </section>
+</main>
+
+    <!-- Include the footer -->
+    <div id="footer-container"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/components.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

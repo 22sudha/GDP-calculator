@@ -1,0 +1,74 @@
+<!-- Colorful blur circles in background -->
+<div class="fixed top-0 left-0 w-96 h-96 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-20 filter blur-3xl"></div>
+<div class="fixed top-96 right-0 w-96 h-96 rounded-full bg-gradient-to-l from-green-400 to-teal-500 opacity-20 filter blur-3xl"></div>
+<div class="fixed bottom-0 left-1/3 w-96 h-96 rounded-full bg-gradient-to-tr from-pink-400 to-rose-500 opacity-20 filter blur-3xl"></div>
+<div class="fixed -bottom-32 right-0 w-96 h-96 rounded-full bg-gradient-to-tl from-yellow-400 to-orange-500 opacity-20 filter blur-3xl"></div>
+
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700">
+    <div class="container max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <!-- Left Side: Logo -->
+        <div class="flex items-center space-x-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Heart container -->
+                <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.77.78L12 20.66l7.65-7.65.77-.78a5.4 5.4 0 0 0 0-7.65z"/>
+                <!-- Heartbeat line -->
+                <path class="heartbeat-line" d="M3 12h4l2-4 3 8 2-4h7" 
+                    stroke-dasharray="60"
+                    stroke-dashoffset="60"
+                >
+                    <animate attributeName="stroke-dashoffset"
+                        values="60;0;60"
+                        dur="2s"
+                        repeatCount="indefinite"
+                    />
+                </path>
+            </svg>
+            <span class="text-xl font-semibold text-gray-800 dark:text-white">Life Expectancy Analysis</span>
+        </div>
+
+        <!-- Center: Navigation Menu -->
+        <nav>
+            <ul class="flex space-x-6 text-base">
+                <li>
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                </li>
+                <li>
+                    <a href="input.html" class="nav-link">
+                        <i class="fas fa-database mr-2"></i>Data Input
+                    </a>
+                </li>
+                <li>
+                    <a href="results.html" class="nav-link">
+                        <i class="fas fa-chart-line mr-2"></i>Results
+                    </a>
+                </li>
+                <li>
+                    <a href="compare.html" class="nav-link">
+                        <i class="fas fa-balance-scale mr-2"></i>Compare
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle mr-2"></i>About
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+           
+        <div class="flex items-center space-x-4">
+            <a href="profile.html" class="text-gray-600 hover:text-blue-600 transition duration-300 group flex items-center">
+                <i class="fas fa-user-circle text-2xl group-hover:text-blue-500"></i>
+                <span class="ml-2 text-sm font-medium">Profile</span>
+            </a>
+            <a href="settings.html" class="text-gray-600 hover:text-blue-600 transition duration-300 group flex items-center">
+                <i class="fas fa-cog text-2xl group-hover:text-blue-500"></i>
+                <span class="ml-2 text-sm font-medium">Settings</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+ 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Connection Test</title>
+</head>
+<body>
+    <h1>Backend Connection Test</h1>
+    <button onclick="testConnection()">Test Connection</button>
+    <button onclick="healthCheck()">Health Check</button>
+    <div id="result"></div>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:5000';
+
+        async function healthCheck() {
+            document.getElementById('result').innerHTML = 'Checking server health...';
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `Health Check: ${data.status}`;
+            } catch (error) {
+                console.error('Health check failed:', error);
+                document.getElementById('result').innerHTML = 'Server appears to be offline';
+            }
+        }
+
+        function testConnection() {
+            document.getElementById('result').innerHTML = 'Testing connection...';
+            
+            fetch(`${API_BASE}/api/test`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('result').innerHTML = `Connection Status: ${data.message}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 
+                    `Connection failed. Check if server is running at ${API_BASE}`;
+            });
+        }
+    </script>
+</body>
+</html>

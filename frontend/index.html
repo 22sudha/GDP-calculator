@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Expectancy Analysis</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="theme-transition min-h-screen relative overflow-x-hidden bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    
+    <!-- Include the navbar -->
+    <div id="navbar-container"></div>
+
+    <main class="relative z-10">
+        <section class="hero py-16 px-4 container mx-auto text-center" data-aos="fade-up">
+            <h1 class="text-5xl font-bold text-gray-800 mb-6" data-aos="fade-up" data-aos-delay="200">Life Expectancy Analysis</h1>
+            <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="400">Explore and analyze life expectancy data across different countries and years</p>
+            
+            <div class="stats-container grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="600">
+                <div class="stat-item bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <i class="fas fa-heartbeat text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Global Average</h3>
+                    <p class="text-2xl font-bold text-blue-600">72.6 years</p>
+                </div>
+                <div class="stat-item bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <i class="fas fa-globe-americas text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Countries Tracked</h3>
+                    <p class="text-2xl font-bold text-blue-600">150+</p>
+                </div>
+                <div class="stat-item bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <i class="fas fa-chart-line text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Years of Data</h3>
+                    <p class="text-2xl font-bold text-blue-600">2000-2024</p>
+                </div>
+            </div>
+            
+            <div class="cta-buttons flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="800">
+                <a href="results.html" class="btn primary px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full shadow-md hover:shadow-lg transition duration-300">Start Analysis</a>
+                <a href="about.html" class="btn secondary px-8 py-3 bg-white hover:bg-gray-100 text-blue-600 font-medium rounded-full shadow-md hover:shadow-lg transition duration-300 border border-blue-200">Learn More</a>
+            </div>
+        </section>
+
+        <section class="features py-16 px-4 bg-white/80 backdrop-blur-md" data-aos="fade-up">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">Features</h2>
+                
+                <div class="feature-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="feature-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-database text-4xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Input</h3>
+                        <p class="text-gray-600">Input and manage life expectancy data easily</p>
+                    </div>
+                    <div class="feature-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-chart-bar text-4xl text-green-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Visualization</h3>
+                        <p class="text-gray-600">View interactive charts and graphs</p>
+                    </div>
+                    <div class="feature-card bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="600">
+                        <i class="fas fa-balance-scale text-4xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Comparison</h3>
+                        <p class="text-gray-600">Compare data between different countries</p>
+                    </div>
+                    <div class="feature-card bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="800">
+                        <i class="fas fa-microscope text-4xl text-amber-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Analysis</h3>
+                        <p class="text-gray-600">Get detailed statistical analysis</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Include the footer -->
+    <div id="footer-container"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Load the navbar and footer with error handling
+        async function loadComponent(path, containerId) {
+            try {
+                const response = await fetch(path);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.text();
+                document.getElementById(containerId).innerHTML = data;
+            } catch (error) {
+                console.error(`Error loading ${path}:`, error);
+                document.getElementById(containerId).innerHTML = `<div class="text-red-500">Error loading component</div>`;
+            }
+        }
+
+        // Load components
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponent('include/navbar.html', 'navbar-container');
+            loadComponent('include/footer.html', 'footer-container');
+        });
+    </script>
+</body>
+</html>
